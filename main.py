@@ -17,12 +17,12 @@ def mergeAudios(audios):
     return combined
 
 def generateSkeleton():
-    audio = AudioSegment.from_mp('railway.mp3')
+    audio = AudioSegment.from_mp3('railway.mp3')
 
     #1.Generate Kripya dhyan dijiye
     start = 88000
     finished = 90200
-    audioPocessed = audio[start:finished]
+    audioProcessed = audio[start:finished]
     audioProcessed.export("1_hindi.mp3", format="mp3")
 
     # 2 is from city
@@ -86,8 +86,8 @@ def generateAnnouncement(filename):
 
         audios = [f"{i}_hindi.mp3" for i in range(1, 12)]
 
-        announcement = mergeudios(audios)
-        announcement.export(f"announcement_{item['train_no']}_{iem['train_name']}.mp3", format="mp3")
+        announcement = mergeAudios(audios)
+        announcement.export(f"announcement_{item['train_no']}_{item['train_name']}.mp3", format="mp3")
 
 if __name__ == '__main__':
     print("Generating Skeleton...")
