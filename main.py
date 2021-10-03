@@ -3,7 +3,7 @@ import pandas as pd
 from pydub import AudioSegment
 from gtts import gTTS
 
-def textToSpeech(text, filename):
+def wordToSpeech(text, filename):
     mytext = str(text)
     language = 'hi'
     myobj = gTTS(text=mytext, lang=language)
@@ -70,19 +70,19 @@ def generateAnnouncement(filename):
     print(df)
     for index, item in df.iterrows():
         # 2 - Generate from city
-        textToSpeech(item['from'], '2_hindi.mp3')
+        wordToSpeech(item['from'], '2_hindi.mp3')
 
         # 4 - Generate via-city
-        textToSpeech(item['via'], '4_hindi.mp3')
+        wordToSpeech(item['via'], '4_hindi.mp3')
 
         # 6 - Generate to-city
-        textToSpeech(item['to'], '6_hindi.mp3')
+        wordToSpeech(item['to'], '6_hindi.mp3')
 
         # 8 - Generate train number no and name
-        textToSpeech(item['train_no'] + " " + item['train_name'], '8_hindi.mp3')
+        wordToSpeech(item['train_no'] + " " + item['train_name'], '8_hindi.mp3')
 
         # 10 - Generate platform number
-        textToSpeech(item['platform'], '10_hindi.mp3')
+        wordToSpeech(item['platform'], '10_hindi.mp3')
 
         audios = [f"{i}_hindi.mp3" for i in range(1, 12)]
 
